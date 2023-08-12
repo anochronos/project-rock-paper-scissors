@@ -55,6 +55,7 @@ function playRound(playerSelection, computerSelection){
             }
             else {
                 console.log("You Lose! Rock beats Scissors");
+                computerWins++;
             }
             break;
     }
