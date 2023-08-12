@@ -22,25 +22,57 @@ function getPlayerChoice(){
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection===computerSelection){
-        return "Its a Tie!";
+        console.log("Its a Tie!");
+        return;
     }
     switch(playerSelection){
         case "Rock":
             if(computerSelection !== "Paper"){
-                return "You Win! Rock beats Paper";
+                console.log("You Win! Rock beats Paper");
+                playerWins++;
             }
-            else return "You Lose! Paper beats Rock";
+            else {
+                console.log("You Lose! Paper beats Rock");
+                computerWins++;
+            }
+            break;
         
         case "Paper":
             if(computerSelection !== "Scissors"){
-                return "You Win! Paper Beats Rock";
+                console.log("You Win! Paper Beats Rock");
+                playerWins++;
             }
-            else return "You Lose! Scissors beats Paper ";
+            else {
+                console.log("You Lose! Scissors beats Paper");
+                computerWins++;
+            }
+            break;
         
         case "Scissors":
             if(computerSelection !== "Rock"){
-                return "You Win! Scissors beats Paper"
+                console.log("You Win! Scissors beats Paper");
+                playerWins++;
             }
-            else return "You Lose! Rock beats Scissors";
+            else {
+                console.log("You Lose! Rock beats Scissors");
+            }
+            break;
     }
 }
+
+function game(){
+    for(let i = 1; i <= 5; i++){
+        playRound(getPlayerChoice(),getComputerChoice());
+    }
+
+    if (playerWins > computerWins)
+        console.log("Congratulations! You Won the Game!")
+    else if (playerWins===computerWins)
+        console.log("The game is a Tie!");
+    else
+        console.log("Unfortunately computer won the game!")
+}
+
+let playerWins = 0;
+let computerWins = 0;
+game();
